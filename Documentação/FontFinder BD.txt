@@ -1,0 +1,31 @@
+﻿create database FontFinder;
+use FontFinder;
+
+CREATE TABLE usuarios(
+  cod_registrado int(11) NOT NULL AUTO_INCREMENT,
+  nome varchar(50) NOT NULL,
+  senha varchar(20) NOT NULL,
+  email varchar(100) NOT NULL,
+  cpf varchar(11) NOT NULL,
+  rg varchar(9) DEFAULT NULL,
+  PRIMARY KEY (`cod_registrado`),
+  UNIQUE KEY `cpf` (`cpf`),
+  UNIQUE KEY `email` (`email`)
+);
+
+CREATE TABLE site(
+  id int(11) NOT NULL AUTO_INCREMENT,
+  nome varchar(30) NOT NULL,
+  nconteúdo int(11) NOT NULL,
+  nconfiabilidade int(11) NOT NULL,
+  nrelevancia int(11) NOT NULL,
+  nentendimento int(11) NOT NULL,
+  foco varchar(50) DEFAULT NULL,
+  cad_autor int(11) DEFAULT NULL,
+  nfinal int(11) NOT NULL,
+  foreign key (cad_autor) references usuarios(cod_registrado),
+  PRIMARY KEY (`id`)
+);
+
+insert into usuarios (nome,senha,email,cpf,rg)values
+('Pedro Campos Novais','oipovo','pcnovais2002@gmail.com','36056041883','386800169');
